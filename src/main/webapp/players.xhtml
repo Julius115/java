@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+>
+<h:head/>
+<h:body>
+    <h2>All players in #{playersForClub.club.title} team:</h2>
+    <ol>
+        <ui:repeat value="#{playersForClub.club.players}" var="player">
+            <li>#{player.name}</li>
+        </ui:repeat>
+    </ol>
+    <h:form>
+        <h:inputText a:placeholder="name" value="#{playersForClub.newPlayer.name}" required="true"/>
+        <h:commandButton value="Add new player" action="#{playersForClub.createPlayer}">
+            <f:param name="clubId" value="#{playersForClub.club.id}"/>
+        </h:commandButton>
+    </h:form>
+    <br/>
+    <h:link outcome="index" value="Back to home page"/>
+</h:body>
+</html>

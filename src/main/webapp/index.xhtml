@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+>
+<h:head/>
+<h:body>
+    <h2>Clubs:</h2>
+    <ol>
+        <ui:repeat value="#{clubs.allClubs}" var="club">
+            <li>
+                <h:link value="#{club.title} #{club.stadium}" outcome="club?clubId=#{club.id}"/>
+            </li>
+        </ui:repeat>
+    </ol>
+
+    <h2>Players:</h2>
+    <ol>
+        <ui:repeat value="#{players.allPlayers}" var="player">
+            <li>#{player.name}</li>
+        </ui:repeat>
+    </ol>
+
+    <h2>Supporters:</h2>
+    <ol>
+        <ui:repeat value="#{supporters.allSupporters}" var="supporter">
+            <li>#{supporter.name}</li>
+        </ui:repeat>
+    </ol>
+
+    <h:form>
+        <h:inputText value="#{clubs.newClub.title}" required="true"/>
+        <h:commandButton value="Add new club" action="#{clubs.createNewClub}"/>
+    </h:form>
+    <br/>
+    <h:form>
+        <h:inputText value="#{players.newPlayer.name}" required="true"/>
+        <h:commandButton value="Add new player" action="#{players.createNewPlayer}"/>
+    </h:form>
+    <br/>
+    <h:form>
+        <h:inputText value="#{supporters.newSupporter.name}" required="true"/>
+        <h:commandButton value="Add new supporter" action="#{supporters.createNewSupporter}"/>
+    </h:form>
+    <br/>
+    <h:link outcome="mybatis/clubs" value="MyBatis implementation"/>
+</h:body>
+</html>
